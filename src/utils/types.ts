@@ -44,6 +44,7 @@ export namespace IBoard {
 
   export interface ICell {
     value: Games.Cell;
+    isDisabled: boolean;
     handleCell: (cell: Cell, moveIdx: number) => void;
   }
 }

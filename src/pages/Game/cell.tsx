@@ -1,6 +1,6 @@
 import { IBoard } from "../../utils/types";
 
-export default function Cell({ value, handleCell }: IBoard.ICell) {
+export default function Cell({ value, handleCell, isDisabled }: IBoard.ICell) {
   console.log("value: ", value);
   return (
     <button
@@ -9,6 +9,7 @@ export default function Cell({ value, handleCell }: IBoard.ICell) {
         console.log("value: ", value);
         handleCell(value, 0);
       }}
+      disabled={isDisabled}
     >
       {value}
     </button>

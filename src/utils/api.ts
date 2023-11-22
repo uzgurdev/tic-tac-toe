@@ -4,6 +4,7 @@ import { Games, IAuth, IEntity } from "./types";
 let id: any = "";
 export let CellArr: Games.Board = [];
 let NextPlayerApi: Games.Player = "O" ? "X" : "O";
+let isWinnerApi = '';
 
 export function getGames() {
   const data = axios.get(
@@ -62,6 +63,7 @@ async function handleCell(cell: Games.Player, moveIdx: number) {
 
     CellArr = game.data.board;
     NextPlayerApi = game.data.nextPlayer;
+    isWinnerApi = game.data.winner;
 
     console.log("CellArr: ", CellArr);
     console.log("Game: ", game.data);
@@ -74,4 +76,4 @@ async function handleCell(cell: Games.Player, moveIdx: number) {
   }
 }
 
-export { handleAuth, handleCell, NextPlayerApi };
+export { handleAuth, handleCell, NextPlayerApi, isWinnerApi };
