@@ -11,13 +11,13 @@ export default function Board() {
   const [NextPlayer, setNextPlayer] = useState<Games.Player>(NextPlayerApi);
 
   useEffect(() => {
-    setTimeout(() => {
-      console.log(CellArr);
-      setCells([...CellArr]);
-      setNextPlayer(NextPlayerApi);
-      console.log("new Cells: ", Cells);
-    }, 1000);
-  }, []);
+    console.log(CellArr);
+    setCells([...CellArr]);
+    setNextPlayer(NextPlayerApi);
+  }, [Cells]);
+
+  console.log("CellArr: ", CellArr);
+  console.log("NextPlayer: ", NextPlayer);
 
   return (
     <div className="board">
@@ -26,13 +26,19 @@ export default function Board() {
           <Link to="/auth">I guess you are not registered yet 🧐</Link>
         </button>
       ) : (
-        CellArr.map((cell: Games.Cell, index) => (
-          <Cell
-            key={index}
-            value={cell}
-            handleCell={() => handleCell(NextPlayerApi, index)}
-          />
-        ))
+        Cells.map((cell: Games.Cell, index) => {
+          console.log("cell: ", cell);
+          return (
+            <Cell
+              key={index}
+              value={cell}
+              handleCell={() => {
+                console.log("cell: ", cell);
+                handleCell(NextPlayerApi, index);
+              }}
+            />
+          );
+        })
       )}
     </div>
   );
