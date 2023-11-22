@@ -1,9 +1,9 @@
+import { IBoard } from "../../utils/types";
 
-interface CellProps {
-    value: string;
-}
-export default function Cell({value}: CellProps) {
+export default function Cell({ value, handleCell }: IBoard.ICell) {
   return (
-    <div className="cell">{value}</div>
-  )
+    <button className="cell" onClick={() => handleCell(value, 0)}>
+      {value}
+    </button>
+  );
 }
